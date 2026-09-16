@@ -9,7 +9,8 @@ import {
 
 export type MobileUniwindThemeName =
   | MobileThemeAppearance
-  | `${BuiltInThemeId}-${MobileThemeAppearance}`;
+  | `${Exclude<BuiltInThemeId, "studio">}-${MobileThemeAppearance}`
+  | "studio-dark";
 
 export interface MobileThemeRuntimeState {
   readonly baseFontSize: number;
@@ -32,19 +33,22 @@ export type MobileThemeRuntimeOperation =
 const UNIWIND_THEME_NAMES: ReadonlyArray<"light" | "dark" | MobileUniwindThemeName> = [
   "light",
   "dark",
-  ...BUILT_IN_THEME_IDS.flatMap((themeId) => [
+  ...BUILT_IN_THEME_IDS.filter((themeId) => themeId !== "studio").flatMap((themeId) => [
     `${themeId}-light` as const,
     `${themeId}-dark` as const,
   ]),
+  "studio-dark",
 ];
 
 export function getMobileUniwindThemeName(
   themeId: MobileThemeId,
   appearance: MobileThemeAppearance,
 ): MobileUniwindThemeName {
-  return themeId === DEFAULT_MOBILE_THEME_ID || themeId === "material-you"
-    ? appearance
-    : `${themeId}-${appearance}`;
+  if (themeId === DEFAULT_MOBILE_THEME_ID || themeId === "material-you") return appearance;
+  // Studio intentionally has no light counterpart; it keeps its black canvas
+  // when selected while the device uses a light system appearance.
+  if (themeId === "studio") return "studio-dark";
+  return `${themeId}-${appearance}`;
 }
 
 /**

@@ -1,4 +1,4 @@
-export const BUILT_IN_THEME_IDS = ["t3-chat", "grove", "ocean", "ember", "iris"] as const;
+export const BUILT_IN_THEME_IDS = ["t3-chat", "grove", "ocean", "ember", "iris", "studio"] as const;
 
 /** The mobile app's own hand-tuned palette, which is not part of the built-in library. */
 export const MOBILE_DEFAULT_THEME_ID = "t3-code";
@@ -26,6 +26,7 @@ export const RESERVED_THEME_IDS: ReadonlySet<string> = new Set([
   "t3-ocean",
   "t3-ember",
   "t3-iris",
+  "t3-studio",
 ]);
 
 /**
@@ -756,12 +757,79 @@ export const IRIS_THEME: ThemeDefinition = {
   sidebarArtwork: true,
 };
 
+/** A dark-only palette drawn from the studio's black, blue-gray visual language. */
+export const STUDIO_THEME: ThemeDefinition = {
+  id: "studio",
+  label: "Studio",
+  appearance: "dark",
+  colors: {
+    canvas: "oklch(0 0 0)",
+    chrome: "oklch(0 0 0)",
+    toolbar: "oklch(0 0 0)",
+    toolbarForeground: "oklch(0.925428 0.009687 273.35)",
+    toolbarBorder: "oklch(0.27609 0.026285 275.147)",
+    toolbarControl: "oklch(0.189059 0.018602 274.759)",
+    toolbarControlForeground: "oklch(0.925428 0.009687 273.35)",
+    toolbarControlHover: "oklch(0.219972 0.022083 272.642)",
+    surface: "oklch(0.146723 0.013103 277.047)",
+    surfaceRaised: "oklch(0.189059 0.018602 274.759)",
+    surfaceOverlay: "oklch(0.219972 0.022083 272.642)",
+    text: "oklch(0.925428 0.009687 273.35)",
+    textMuted: "oklch(0.666142 0.034735 273.872)",
+    border: "oklch(0.27609 0.026285 275.147)",
+    input: "oklch(0.320347 0.032929 272.398)",
+    focus: "oklch(0.626706 0.122675 272.319)",
+    accent: "oklch(0.626706 0.122675 272.319)",
+    accentForeground: "oklch(0 0 0)",
+    secondary: "oklch(0.213702 0.029998 274.908)",
+    secondaryForeground: "oklch(0.925428 0.009687 273.35)",
+    muted: "oklch(0.189059 0.018602 274.759)",
+    mutedForeground: "oklch(0.816073 0.040637 271.369)",
+    placeholder: "oklch(0.666142 0.034735 273.872)",
+    secondaryLabel: "oklch(0.666142 0.034735 273.872)",
+    iconMuted: "oklch(0.666142 0.034735 273.872)",
+    error: "oklch(0.628879 0.185297 15.77)",
+    errorForeground: "oklch(0.925428 0.009687 273.35)",
+    errorSurface: "oklch(0.219506 0.047318 3.707)",
+    warning: "oklch(0.880303 0.134778 86.062)",
+    warningForeground: "oklch(0.880303 0.134778 86.062)",
+    warningSurface: "oklch(0.259505 0.037487 89.674)",
+    update: "oklch(0.626706 0.122675 272.319)",
+    updateForeground: "oklch(0.92109 0.037767 272.528)",
+    updateSurface: "oklch(0.252129 0.039035 270.665)",
+    accentSurface: "oklch(0.263383 0.02877 272.744)",
+    accentSurfaceForeground: "oklch(0.925428 0.009687 273.35)",
+    messageSurface: "oklch(0.219972 0.022083 272.642)",
+    messageForeground: "oklch(0.925428 0.009687 273.35)",
+    messageAction: "oklch(0.713988 0.110459 272.349)",
+    messageActionForeground: "oklch(0 0 0)",
+    messageActionHover: "oklch(0.777509 0.076073 272.825)",
+    codeBackground: "oklch(0.160433 0.015237 272.199)",
+    codeForeground: "oklch(0.925428 0.009687 273.35)",
+    sidebar: "oklch(0.123558 0.012955 273.353)",
+    sidebarForeground: "oklch(0.925428 0.009687 273.35)",
+    sidebarMutedForeground: "oklch(0.666142 0.034735 273.872)",
+    sidebarControlSurface: "oklch(0.213702 0.029998 274.908)",
+    sidebarRowHover: "oklch(0.189059 0.018602 274.759)",
+    sidebarRowActive: "oklch(0.246435 0.031489 270.622)",
+    sidebarRowSelected: "oklch(0.263383 0.02877 272.744)",
+    sidebarBorder: "oklch(0.27609 0.026285 275.147)",
+    terminalBackground: "oklch(0 0 0)",
+    terminalForeground: "oklch(0.925428 0.009687 273.35)",
+    terminalCursor: "oklch(0.626706 0.122675 272.319)",
+    terminalSelection: "oklch(0.320347 0.032929 272.398)",
+    terminalScrollbar: "oklch(0.343709 0.041946 269.343)",
+    terminalScrollbarHover: "oklch(0.437585 0.050115 268.246)",
+  },
+};
+
 export const BUILT_IN_THEMES: ReadonlyArray<ThemeDefinition> = [
   T3_CHAT_THEME,
   GROVE_THEME,
   OCEAN_THEME,
   EMBER_THEME,
   IRIS_THEME,
+  STUDIO_THEME,
 ];
 
 export function getThemeColorsForAppearance(

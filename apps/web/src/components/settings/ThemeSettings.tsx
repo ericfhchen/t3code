@@ -27,6 +27,7 @@ import {
   GROVE_THEME,
   IRIS_THEME,
   OCEAN_THEME,
+  STUDIO_THEME,
 } from "../../themePalette";
 import {
   AlertDialog,
@@ -60,6 +61,7 @@ const MAINTAINER_THEMES: ReadonlyArray<ThemeDefinition> = [
   OCEAN_THEME,
   EMBER_THEME,
   IRIS_THEME,
+  STUDIO_THEME,
 ];
 
 function collectionVariantLabels(themes: ReadonlyArray<ThemeDefinition>): ReadonlyArray<string> {
@@ -693,7 +695,7 @@ export function ThemeLibrary({
 
   // Rings always show the effective owner of each appearance: an unpicked
   // half belongs to the default card (a null owner), so a fresh install
-  // shows T3 Code selected instead of nothing.
+  // shows CODE selected instead of nothing.
   const pickedModesFor = (cardId: string | null): ThemeMode[] => {
     const rings: ThemeMode[] = [];
     if (lightOwner === cardId) rings.push("light");
