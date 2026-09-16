@@ -2440,7 +2440,7 @@ export function GeneralSettingsPanel() {
         />
         <SettingsRow
           {...searchableSetting("default-diff-file-state")}
-          description="Start with files expanded or collapsed when opening diffs or a pull request's Code tab."
+          description="Start with files expanded or collapsed when opening diffs or a pull request's CODE tab."
           resetAction={
             settings.diffFilesCollapsed !== DEFAULT_UNIFIED_SETTINGS.diffFilesCollapsed ? (
               <SettingResetButton
@@ -3126,7 +3126,7 @@ export function GeneralSettingsPanel() {
         />
         <SettingsRow
           {...searchableSetting("open-source-licenses")}
-          description="Notices for dependencies, assets, and optional tools used by T3 Code."
+          description="Notices for dependencies, assets, and optional tools used by CODE."
           control={
             <Button
               render={<Link to="/settings/open-source-licenses" />}

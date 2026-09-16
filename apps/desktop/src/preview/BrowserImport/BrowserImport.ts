@@ -1,6 +1,6 @@
 /**
  * Browser import service - lists importable sources and writes their cookies
- * into a T3 Code browser profile's Electron partition.
+ * into a CODE browser profile's Electron partition.
  *
  * @module BrowserImport
  */

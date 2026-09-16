@@ -72,7 +72,7 @@ describe("buildCommandPaletteProjectMetadata", () => {
       projects: [
         {
           environmentId: localEnvironmentId,
-          title: "T3 Code",
+          title: "CODE",
           workspaceRoot: "/Users/theo/Projects/t3code",
         },
         {
@@ -85,7 +85,7 @@ describe("buildCommandPaletteProjectMetadata", () => {
     });
 
     expect(metadata.searchTerms).toEqual([
-      "T3 Code",
+      "CODE",
       "/Users/theo/Projects/t3code",
       "Local",
       "t3code",
@@ -102,7 +102,7 @@ describe("buildCommandPaletteProjectMetadata", () => {
         {
           kind: "action",
           value: "project:t3code",
-          title: "T3 Code",
+          title: "CODE",
           searchTerms: metadata.searchTerms,
           icon: null,
           run: async () => undefined,
@@ -118,12 +118,12 @@ describe("buildCommandPaletteProjectMetadata", () => {
       projects: [
         {
           environmentId: remoteEnvironmentId,
-          title: "T3 Code",
+          title: "CODE",
           workspaceRoot: "/srv/t3code",
         },
         {
           environmentId: remoteEnvironmentId,
-          title: "T3 Code worktree",
+          title: "CODE worktree",
           workspaceRoot: "/srv/t3code-feature",
         },
       ],
@@ -139,12 +139,12 @@ describe("buildCommandPaletteProjectMetadata", () => {
       projects: [
         {
           environmentId: remoteEnvironmentId,
-          title: "T3 Code",
+          title: "CODE",
           workspaceRoot: "/srv/t3code",
         },
         {
           environmentId: secondRemoteEnvironmentId,
-          title: "T3 Code mirror",
+          title: "CODE mirror",
           workspaceRoot: "/srv/mirror/t3code",
         },
       ],
@@ -162,7 +162,7 @@ describe("buildCommandPaletteProjectMetadata", () => {
       projects: [
         {
           environmentId: remoteEnvironmentId,
-          title: "T3 Code",
+          title: "CODE",
           workspaceRoot: "/srv/t3code",
         },
       ],
@@ -345,7 +345,7 @@ function makeThread(overrides: Partial<Thread> = {}): Thread {
 
 describe("buildProjectActionItems", () => {
   it("shows the grouped display name but keeps the real title for icons", () => {
-    const project = makeProject({ title: "fleet", workspaceRoot: "/Users/theo/Code/p/fleet" });
+    const project = makeProject({ title: "fleet", workspaceRoot: "/Users/theo/CODE/p/fleet" });
     const iconTitles: string[] = [];
     const [item] = buildProjectActionItems({
       projects: [{ ...project, displayName: "t3dotgg/fleet" }],
@@ -359,7 +359,7 @@ describe("buildProjectActionItems", () => {
 
     expect(item?.title).toBe("t3dotgg/fleet");
     expect(item?.searchTerms).toEqual(
-      expect.arrayContaining(["t3dotgg/fleet", "fleet", "/Users/theo/Code/p/fleet"]),
+      expect.arrayContaining(["t3dotgg/fleet", "fleet", "/Users/theo/CODE/p/fleet"]),
     );
     expect(iconTitles).toEqual(["fleet"]);
   });
@@ -563,7 +563,7 @@ describe("buildThreadActionItems", () => {
   it("keeps message excerpts searchable without replacing thread metadata", () => {
     const [item] = buildThreadActionItems({
       threads: [makeThread({ branch: "feat/search" })],
-      projectTitleById: new Map([[PROJECT_ID, "T3 Code"]]),
+      projectTitleById: new Map([[PROJECT_ID, "CODE"]]),
       sortOrder: "updated_at",
       icon: null,
       getContentMatch: () => ({
@@ -580,13 +580,13 @@ describe("buildThreadActionItems", () => {
       snippet: "The relay reconnect is now bounded.",
       query: "reconnect",
     });
-    expect(item?.description).toBe("T3 Code · #feat/search");
+    expect(item?.description).toBe("CODE · #feat/search");
   });
 
   it("prefers renderDescription when provided", () => {
     const [item] = buildThreadActionItems({
       threads: [makeThread({ branch: "feat/search", worktreePath: "/tmp/wt" })],
-      projectTitleById: new Map([[PROJECT_ID, "T3 Code"]]),
+      projectTitleById: new Map([[PROJECT_ID, "CODE"]]),
       sortOrder: "updated_at",
       icon: null,
       renderDescription: (thread, { projectTitle }) =>
@@ -594,7 +594,7 @@ describe("buildThreadActionItems", () => {
       runThread: async (_thread) => undefined,
     });
 
-    expect(item?.description).toBe("T3 Code:feat/search:wt");
+    expect(item?.description).toBe("CODE:feat/search:wt");
   });
 
   it("filters archived threads out of thread search items", () => {
